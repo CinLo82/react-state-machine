@@ -4,6 +4,10 @@ import './Passengers.css'
 export const Passengers = ({ state, send }) => {
   const [value, changeValue] = useState('')
 
+   const goToTickets = () => {
+    send('DONE')
+   }
+
   const onChangeInput = (e) => {
     changeValue(e.target.value)
   }
@@ -34,7 +38,8 @@ export const Passengers = ({ state, send }) => {
         </button>
         <button
           className='Passenger-pay button'
-          type="button"
+          type='button'
+          onClick={goToTickets}
         >
           Ver mi ticket
         </button>
