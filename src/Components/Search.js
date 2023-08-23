@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import './Search.css'
 
@@ -6,7 +5,7 @@ export const Search = ({ send }) => {
   const [flight, setFlight] = useState('')
 
   const goToPassengers = () => {
-    send('CONTINUE')
+    send('CONTINUE', { selectedCountry: flight })
   }
 
   const handleSelectChange = (event) => {
