@@ -35,7 +35,10 @@ const bookingMachine = createMachine({
     passengers: {
       on: {
         DONE: 'tickets',
-        CANCEL: 'initial',
+        CANCEL: {
+          target: 'initial',
+          actions: 'cleanContext'
+        },
         ADD: {
           target: 'passengers',
           actions: assign(
@@ -46,11 +49,12 @@ const bookingMachine = createMachine({
     },
    
   },
-   actions: {
-      imprimirInicio: () => console.log('imprimir inicio'),
-      imprimirEntrada: () => console.log('imprimir entrada al search'),
-      imprimirSalida: () => console.log('imprimir salida del search'),
-    }
+  actions: {
+    cleanContext: assign({
+      selectedCountry: '',
+      passengers: [],
+    })
+  }
 })
 
 export { bookingMachine }
