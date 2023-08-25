@@ -38,7 +38,10 @@ const bookingMachine = createMachine({
   initial: 'initial',
   context: {
     passengers: [],
-    selectedCountry: '',
+    originCountry: '',
+    destinationCountry: '',
+    departureDate: '',
+    returnDate: '',
   },
   states: {
     initial: {
@@ -53,29 +56,21 @@ const bookingMachine = createMachine({
         CONTINUE: {
           target: 'passengers',
           actions: assign({
-            selectedCountry: (context, event) => event.selectedCountry
+            originCountry: (context, event) => event.originCountry,
+            destinationCountry: (context, event) => event.destinationCountry,
+            departureDate: (context, event) => event.departureDate, 
+            returnDate:(context,event)=> event.returnDate
+
           })
         },
         CANCEL: 'initial',
       },
       ...fillCountries,
     },
-    tickets: {
-      after: {
-        5000: {
-          target: 'initial',
-          actions: 'cleanContext'
-        },
-      },
-      on: {
-        FINISH: 'initial',
-      }
-    },
     passengers: {
       on: {
         DONE: {
           target: 'tickets',
-   
         },
         CANCEL: {
           target: 'initial',
@@ -89,7 +84,26 @@ const bookingMachine = createMachine({
         }
       }
     },
-   
+    tickets: {
+      after: {
+        10000: {
+          target: 'initial',
+          actions: 'cleanContext'
+        },
+      },
+      on: {
+        FINISH: 'initial',
+      },
+      entry: assign((context, event) => {
+        return {
+          selectedCountry: context.selectedCountry,
+          departureDate: context.departureDate,
+          returnDate: context.returnDate,
+          passengers: context.passengers,
+        }
+        }
+      ),
+    },
   },
   actions: {
     cleanContext: assign({

@@ -1,16 +1,33 @@
 .Search {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+}
   
-  .Search-select {
-    font-size: 1rem;
-    margin: 16px 0;
-    border-radius: 8px;
-    padding: 8px;
-    border: none;
-  }
+.Search-select {
+  font-size: 1rem;
+  margin: 16px 0;
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+}
   
-  .Search-continue {
-    margin-left: auto;
-  };
+.Search-continue {
+  margin-left: auto;
+}
+
+.Search-Date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.travel-day {
+  padding: 20px;
+}
+
+.error-message {
+  background-color: white;
+  border-radius: 10px;
+  padding: 4px;
+  color: red;
+}
