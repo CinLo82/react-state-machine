@@ -44,6 +44,7 @@ export const Passengers = ({ state, send }) => {
           className='Passenger-pay button'
           type='button'
           onClick={goToTickets}
+          disabled={!passengers || !passengers[0]}
         >
           Ver mi ticket
         </button>

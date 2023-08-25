@@ -73,7 +73,10 @@ const bookingMachine = createMachine({
     },
     passengers: {
       on: {
-        DONE: 'tickets',
+        DONE: {
+          target: 'tickets',
+   
+        },
         CANCEL: {
           target: 'initial',
           actions: 'cleanContext'
@@ -93,7 +96,8 @@ const bookingMachine = createMachine({
       selectedCountry: '',
       passengers: [],
     })
-  }
+  },
+ 
 })
 
 export { bookingMachine }

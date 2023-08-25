@@ -27,3 +27,7 @@
   .Passengers-title {
     margin-bottom: 16px;
   }
+
+  .Passenger-pay:disabled {
+    opacity: 0.5;
+  }
